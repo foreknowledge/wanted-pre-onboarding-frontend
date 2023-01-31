@@ -1,10 +1,14 @@
 import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signup } from '../apis/auth';
 import EmailInput from '../auth/components/EmailInput';
 import PasswordInput from '../auth/components/PasswordInput';
 import validateEmail from '../auth/domain/validateEmail';
 import validatePassword from '../auth/domain/validatePassword';
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const emailValidation = validateEmail(email);
@@ -15,6 +19,13 @@ const SignUpPage = () => {
     e.preventDefault();
 
     if (!submitEnabled) return;
+
+    signup({ email, password })
+      .then(() => {
+        alert('성공적으로 가입 되었습니다.');
+        navigate('/signin');
+      })
+      .catch((error) => alert(error.message));
   };
 
   return (

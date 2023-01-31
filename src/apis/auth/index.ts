@@ -37,5 +37,17 @@ export async function signup(data: Param): Promise<null> {
         'Content-Type': 'application/json',
       },
     })
-    .then((data) => data.data);
+    .then((data) => data.data)
+    .catch((error: AxiosError) => {
+      const status = error.response?.status;
+      let message: string;
+      if (status === 400) {
+        message = '이미 가입된 사용자 입니다.';
+      } else {
+        message =
+          '알 수 없는 에러가 발생했습니다. 잠시 후 다시 시도 해 주세요.';
+      }
+
+      throw new Error(message);
+    });
 }
