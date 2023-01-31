@@ -1,11 +1,14 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { signin } from '../apis/auth';
 import EmailInput from '../auth/components/EmailInput';
 import PasswordInput from '../auth/components/PasswordInput';
 import validateEmail from '../auth/domain/validateEmail';
 import validatePassword from '../auth/domain/validatePassword';
+import TokenContext from '../context/token/TokenContext';
 
 const SignInPage = () => {
+  const { saveToken } = useContext(TokenContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const emailValidation = validateEmail(email);
@@ -18,9 +21,7 @@ const SignInPage = () => {
     if (!submitEnabled) return;
 
     signin({ email, password })
-      .then((data) => {
-        // TODO - 토큰 저장
-      })
+      .then((data) => saveToken(data.accessToken))
       .catch((error) => alert(error.message));
   };
 
