@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import { signin } from '../apis/auth';
 import EmailInput from '../auth/components/EmailInput';
 import PasswordInput from '../auth/components/PasswordInput';
 import validateEmail from '../auth/domain/validateEmail';
@@ -15,6 +16,12 @@ const SignInPage = () => {
     e.preventDefault();
 
     if (!submitEnabled) return;
+
+    signin({ email, password })
+      .then((data) => {
+        // TODO - 토큰 저장
+      })
+      .catch((error) => alert(error.message));
   };
 
   return (
