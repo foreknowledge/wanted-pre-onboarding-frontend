@@ -1,4 +1,4 @@
-import ValidationResult from '../types/ValidationResult';
+import ValidationResult from './ValidationResult.types';
 
 export default function validatePassword(password: string): ValidationResult {
   if (password.length === 0)

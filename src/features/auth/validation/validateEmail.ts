@@ -1,4 +1,4 @@
-import ValidationResult from '../types/ValidationResult';
+import ValidationResult from './ValidationResult.types';
 
 export default function validateEmail(email: string): ValidationResult {
   if (email.length === 0)

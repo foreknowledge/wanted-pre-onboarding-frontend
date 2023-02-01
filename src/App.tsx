@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TokenProvider from './context/token/TokenProvider';
-import NotFoundPage from './pages/NotFoundPage';
+import NotFoundPage from './pages/not_found/NotFoundPage';
 import Authorized from './pages/redirect/Authorized';
 import UnAuthorized from './pages/redirect/UnAuthorized';
-import SignInPage from './pages/SignInPage';
-import SignUpPage from './pages/SignUpPage';
-import TodoPage from './pages/TodoPage';
+import SignInPage from './pages/signin/SignInPage';
+import SignUpPage from './pages/signup/SignUpPage';
+import TodoPage from './pages/todo/TodoPage';
 
 function App() {
   return (

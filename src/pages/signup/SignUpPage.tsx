@@ -1,13 +1,13 @@
-import { FormEvent, useContext, useState } from 'react';
-import { signin } from '../apis/auth';
-import EmailInput from '../auth/components/EmailInput';
-import PasswordInput from '../auth/components/PasswordInput';
-import validateEmail from '../auth/domain/validateEmail';
-import validatePassword from '../auth/domain/validatePassword';
-import TokenContext from '../context/token/TokenContext';
+import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signup } from '../../apis/auth';
+import EmailInput from '../../features/auth/components/EmailInput';
+import PasswordInput from '../../features/auth/components/PasswordInput';
+import validateEmail from '../../features/auth/validation/validateEmail';
+import validatePassword from '../../features/auth/validation/validatePassword';
 
-const SignInPage = () => {
-  const { saveToken } = useContext(TokenContext);
+const SignUpPage = () => {
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,15 +20,18 @@ const SignInPage = () => {
 
     if (!submitEnabled) return;
 
-    signin({ email, password })
-      .then((data) => saveToken(data.accessToken))
+    signup({ email, password })
+      .then(() => {
+        alert('성공적으로 가입 되었습니다.');
+        navigate('/signin');
+      })
       .catch((error) => alert(error.message));
   };
 
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="w-full max-w-md">
-        <div className="text-center text-2xl font-bold">로그인</div>
+        <div className="text-center text-2xl font-bold">회원 가입</div>
         <form
           className="rounded bg-white px-8 pt-6 pb-8"
           onSubmit={handleSubmit}
@@ -53,13 +56,13 @@ const SignInPage = () => {
               disabled={!submitEnabled}
               type="submit"
             >
-              로그인
+              가입하기
             </button>
             <a
               className="inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800"
-              href="/signup"
+              href="/signin"
             >
-              회원이 아니신가요?
+              이미 회원이신가요?
             </a>
           </div>
         </form>
@@ -67,4 +70,4 @@ const SignInPage = () => {
     </div>
   );
 };
-export default SignInPage;
+export default SignUpPage;

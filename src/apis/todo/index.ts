@@ -1,10 +1,10 @@
+import TodoData from '../../features/todo/types/TodoData.types';
 import apiClient from '../apiClient';
-import Todo from '../../types/todo/Todo';
 
 export async function createTodo(
   accessToken: string,
   todo: string
-): Promise<Todo> {
+): Promise<TodoData> {
   return apiClient
     .post(
       '/todos',
@@ -19,7 +19,7 @@ export async function createTodo(
     .then((data) => data.data);
 }
 
-export async function getTodos(accessToken: string): Promise<Todo[]> {
+export async function getTodos(accessToken: string): Promise<TodoData[]> {
   return apiClient
     .get('/todos', {
       headers: {
@@ -34,7 +34,7 @@ export async function updateTodo(
   todoId: number,
   todo: string,
   isCompleted: boolean
-): Promise<Todo> {
+): Promise<TodoData> {
   const data = { todo, isCompleted };
   return apiClient
     .put(`/todos/${todoId}`, data, {

@@ -1,4 +1,4 @@
-export default interface Todo {
+export default interface TodoData {
   id: number;
   todo: string;
   isCompleted: boolean;

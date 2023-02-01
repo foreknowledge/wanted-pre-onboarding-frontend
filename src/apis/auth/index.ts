@@ -2,9 +2,9 @@ import { AxiosError } from 'axios';
 import apiClient from '../apiClient';
 
 type Param = { email: string; password: string };
-type Response = { accessToken: string };
+type ResponseAuth = { accessToken: string };
 
-export async function signin(data: Param): Promise<Response> {
+export async function signin(data: Param): Promise<ResponseAuth> {
   return apiClient
     .post('/auth/signin', data, {
       headers: {
