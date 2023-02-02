@@ -5,9 +5,10 @@ import TodoData from '../../types/TodoData.types';
 interface Props {
   todo: TodoData;
   onDelete: (id: number) => void;
+  onUpdate: (newTodo: TodoData) => void;
 }
 
-const TodoItem = ({ todo, onDelete }: Props) => {
+const TodoItem = ({ todo, onDelete, onUpdate }: Props) => {
   return (
     <li className="my-2 flex justify-between text-lg">
       <div className="flex items-center">
@@ -15,6 +16,7 @@ const TodoItem = ({ todo, onDelete }: Props) => {
           className="form-checkbox float-left mr-3 h-5 w-5 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-100 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
           type="checkbox"
           checked={todo.isCompleted}
+          onChange={(e) => onUpdate({ ...todo, isCompleted: e.target.checked })}
           id="todoCheck"
         />
         <label
