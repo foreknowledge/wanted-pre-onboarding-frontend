@@ -17,7 +17,7 @@ const TodoPage = () => {
             <TodoAddForm onTodoAdded={invalidateTodos} />
           </div>
           <div className="relative mt-4 flex-1 overflow-y-scroll">
-            <TodoList todos={todos} />
+            <TodoList todos={todos} invalidateTodos={invalidateTodos} />
           </div>
         </div>
       </div>

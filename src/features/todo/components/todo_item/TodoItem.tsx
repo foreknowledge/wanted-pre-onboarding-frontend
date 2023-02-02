@@ -2,7 +2,12 @@ import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TodoData from '../../types/TodoData.types';
 
-const TodoItem = ({ todo }: { todo: TodoData }) => {
+interface Props {
+  todo: TodoData;
+  onDelete: (id: number) => void;
+}
+
+const TodoItem = ({ todo, onDelete }: Props) => {
   return (
     <li className="my-2 flex justify-between text-lg">
       <div className="flex items-center">
@@ -25,7 +30,10 @@ const TodoItem = ({ todo }: { todo: TodoData }) => {
         <button className="text-gray-700 hover:opacity-50">
           <FontAwesomeIcon className="mx-2" icon={faPenToSquare} />
         </button>
-        <button className="text-gray-700 hover:text-red-500">
+        <button
+          className="text-gray-700 hover:text-red-500"
+          onClick={() => onDelete(todo.id)}
+        >
           <FontAwesomeIcon className="mx-2" icon={faTrashCan} />
         </button>
       </div>
