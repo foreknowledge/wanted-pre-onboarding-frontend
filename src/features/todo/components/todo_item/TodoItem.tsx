@@ -29,12 +29,16 @@ const TodoItem = ({ todo, onDelete, onUpdate }: Props) => {
         </label>
       </div>
       <div>
-        <button className="text-gray-700 hover:opacity-50">
+        <button
+          className="text-gray-700 hover:opacity-50"
+          data-testid="modify-button"
+        >
           <FontAwesomeIcon className="mx-2" icon={faPenToSquare} />
         </button>
         <button
           className="text-gray-700 hover:text-red-500"
           onClick={() => onDelete(todo.id)}
+          data-testid="delete-button"
         >
           <FontAwesomeIcon className="mx-2" icon={faTrashCan} />
         </button>

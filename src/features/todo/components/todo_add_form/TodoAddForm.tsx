@@ -35,8 +35,13 @@ const TodoAddForm = ({ onTodoAdded }: Props) => {
         className="form-input flex-1 overflow-hidden text-ellipsis bg-transparent"
         type="text"
         placeholder="새로운 할 일을 추가해보세요."
+        data-testid="new-todo-input"
       />
-      <button className="w-10 hover:opacity-50" type="submit">
+      <button
+        className="w-10 hover:opacity-50"
+        type="submit"
+        data-testid="new-todo-add-button"
+      >
         <FontAwesomeIcon className="text-gray-700" icon={faAdd} />
       </button>
     </form>
