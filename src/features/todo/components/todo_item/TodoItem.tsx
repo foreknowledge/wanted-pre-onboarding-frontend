@@ -5,7 +5,7 @@ import TodoData from '../../types/TodoData.types';
 const TodoItem = ({ todo }: { todo: TodoData }) => {
   return (
     <li className="my-2 flex justify-between text-lg">
-      <div className="">
+      <div>
         <input
           className="form-checkbox float-left mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-100 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
           type="checkbox"

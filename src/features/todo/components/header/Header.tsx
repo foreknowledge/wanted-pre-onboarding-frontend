@@ -12,9 +12,10 @@ const Header = () => {
     }
   };
   return (
-    <div className="flex flex-row-reverse items-center text-gray-700">
+    <div className="relative flex items-center bg-gray-600 p-2 text-gray-50">
+      <h3 className="flex-1 text-center text-2xl font-bold">To Do List</h3>
       <button
-        className="mr-2 flex items-center p-2 text-lg"
+        className="absolute right-5 flex items-center text-lg"
         onClick={handleLogout}
       >
         <FontAwesomeIcon icon={faRightFromBracket} />

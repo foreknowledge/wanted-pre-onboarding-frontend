@@ -5,7 +5,7 @@ const TodoAddForm = () => {
   return (
     <form className="flex w-full border-b-[1px] border-gray-600">
       <input
-        className="form-input flex-1 bg-transparent"
+        className="form-input flex-1 overflow-hidden text-ellipsis bg-transparent"
         type="text"
         placeholder="새로운 투두를 추가해보세요."
       />
