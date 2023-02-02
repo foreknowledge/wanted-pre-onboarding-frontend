@@ -15,7 +15,7 @@ const TodoList = () => {
   }, [token]);
 
   return (
-    <ul className="m-8">
+    <ul className="absolute top-0 bottom-0 left-0 right-0 px-6">
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}

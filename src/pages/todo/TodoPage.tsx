@@ -8,8 +8,10 @@ const TodoPage = () => {
         <Header />
       </div>
       <div className="flex h-screen w-full items-center justify-center">
-        <div className="h-4/5 w-1/2 rounded-xl bg-gray-200">
-          <TodoList />
+        <div className="flex h-4/5 w-1/2 flex-col rounded-xl bg-gray-200">
+          <div className="relative my-4 flex-1 overflow-y-scroll">
+            <TodoList />
+          </div>
         </div>
       </div>
     </div>
