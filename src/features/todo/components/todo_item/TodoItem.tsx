@@ -5,9 +5,9 @@ import TodoData from '../../types/TodoData.types';
 const TodoItem = ({ todo }: { todo: TodoData }) => {
   return (
     <li className="my-2 flex justify-between text-lg">
-      <div>
+      <div className="flex items-center">
         <input
-          className="form-checkbox float-left mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-100 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
+          className="form-checkbox float-left mr-3 h-5 w-5 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-100 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
           type="checkbox"
           checked={todo.isCompleted}
           id="todoCheck"
@@ -22,8 +22,12 @@ const TodoItem = ({ todo }: { todo: TodoData }) => {
         </label>
       </div>
       <div>
-        <FontAwesomeIcon className="mx-2 text-gray-700" icon={faPenToSquare} />
-        <FontAwesomeIcon className="mx-2 text-gray-700" icon={faTrashCan} />
+        <button className="text-gray-700 hover:opacity-50">
+          <FontAwesomeIcon className="mx-2" icon={faPenToSquare} />
+        </button>
+        <button className="text-gray-700 hover:text-red-500">
+          <FontAwesomeIcon className="mx-2" icon={faTrashCan} />
+        </button>
       </div>
     </li>
   );
