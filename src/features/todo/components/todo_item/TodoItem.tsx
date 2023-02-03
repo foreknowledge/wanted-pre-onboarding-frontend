@@ -1,14 +1,31 @@
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useContext } from 'react';
+import { deleteTodo, updateTodo } from '../../../../apis/todo';
+import TokenContext from '../../../../context/token/TokenContext';
 import TodoData from '../../types/TodoData.types';
 
 interface Props {
   todo: TodoData;
-  onDelete: (id: number) => void;
-  onUpdate: (newTodo: TodoData) => void;
+  invalidateTodos: () => void;
 }
 
-const TodoItem = ({ todo, onDelete, onUpdate }: Props) => {
+const TodoItem = ({ todo, invalidateTodos }: Props) => {
+  const { token } = useContext(TokenContext);
+
+  const handleDelete = (id: number) => {
+    if (token && window.confirm('정말 삭제하시겠습니까?')) {
+      deleteTodo(token, id).then(invalidateTodos);
+    }
+  };
+
+  const handleCheckedChange = (checked: boolean) => {
+    if (token) {
+      updateTodo(token, todo.id, todo.todo, checked) //
+        .then(invalidateTodos);
+    }
+  };
+
   return (
     <li className="flex items-center justify-between px-2 py-3 text-lg">
       <div className="flex flex-1 items-center">
@@ -16,7 +33,7 @@ const TodoItem = ({ todo, onDelete, onUpdate }: Props) => {
           className="form-checkbox float-left mr-3 h-5 w-5 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-100 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
           type="checkbox"
           checked={todo.isCompleted}
-          onChange={(e) => onUpdate({ ...todo, isCompleted: e.target.checked })}
+          onChange={(e) => handleCheckedChange(e.target.checked)}
           id="todoCheck"
         />
         <label
@@ -37,7 +54,7 @@ const TodoItem = ({ todo, onDelete, onUpdate }: Props) => {
         </button>
         <button
           className="w-9 text-gray-700 hover:text-red-500"
-          onClick={() => onDelete(todo.id)}
+          onClick={() => handleDelete(todo.id)}
           data-testid="delete-button"
         >
           <FontAwesomeIcon icon={faTrashCan} />
