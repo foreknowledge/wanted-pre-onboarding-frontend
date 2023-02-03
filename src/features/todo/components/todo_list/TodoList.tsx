@@ -12,7 +12,11 @@ const TodoList = () => {
       <ul className="pb-4">
         {todos.map((todo) =>
           todo.id === editTodoId ? (
-            <TodoEditForm key={todo.id} todo={todo} />
+            <TodoEditForm
+              key={todo.id}
+              todo={todo}
+              onEditEnded={() => setEditTodoId(null)}
+            />
           ) : (
             <TodoItem
               key={todo.id}
