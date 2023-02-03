@@ -39,16 +39,19 @@ const TodoEditForm = ({ todo, onEditEnded }: Props) => {
             return { ...todo, todo: e.target.value };
           })
         }
+        data-testid="modify-input"
       />
       <button
         className="w-9 text-green-600 hover:opacity-50"
         onClick={() => updateTodo(editTodo).then(onEditEnded)}
+        data-testid="submit-button"
       >
         <FontAwesomeIcon icon={faCheck} />
       </button>
       <button
         className="w-9 text-red-600 hover:opacity-50"
         onClick={onEditEnded}
+        data-testid="cancel-button"
       >
         <FontAwesomeIcon icon={faXmark} />
       </button>
