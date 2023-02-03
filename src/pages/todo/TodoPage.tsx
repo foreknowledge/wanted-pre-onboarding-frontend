@@ -7,13 +7,13 @@ const TodoPage = () => {
   const { todos, invalidateTodos } = useTodos();
 
   return (
-    <div className="h-screen bg-gray-200">
+    <div className="relative h-screen min-w-[20em] bg-gray-200">
       <div className="absolute top-0 w-full">
         <Header />
       </div>
       <div className="flex h-screen w-full items-center justify-center pt-16">
         <div className="flex h-full w-1/2 flex-col max-md:w-full">
-          <div className="px-6">
+          <div className="px-4">
             <TodoAddForm onTodoAdded={invalidateTodos} />
           </div>
           <div className="relative mt-4 flex-1 overflow-y-scroll">

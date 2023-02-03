@@ -38,11 +38,11 @@ const TodoAddForm = ({ onTodoAdded }: Props) => {
         data-testid="new-todo-input"
       />
       <button
-        className="w-10 hover:opacity-50"
+        className="w-10 text-gray-700 hover:opacity-50"
         type="submit"
         data-testid="new-todo-add-button"
       >
-        <FontAwesomeIcon className="text-gray-700" icon={faAdd} />
+        <FontAwesomeIcon icon={faAdd} />
       </button>
     </form>
   );

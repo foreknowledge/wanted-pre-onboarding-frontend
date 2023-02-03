@@ -26,8 +26,8 @@ const TodoList = ({ todos, invalidateTodos }: Props) => {
   };
 
   return (
-    <div className="absolute top-0 bottom-0 left-0 right-0 px-6">
-      <ul className="py-4">
+    <div className="absolute top-0 bottom-0 left-0 right-0 px-4">
+      <ul className="pb-4">
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
