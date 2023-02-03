@@ -28,13 +28,11 @@ const TodoItem = ({ todo, onEdit }: Props) => {
           onChange={(e) =>
             updateTodo({ ...todo, isCompleted: e.target.checked })
           }
-          id="todoCheck"
         />
         <label
           className={`${
             todo.isCompleted ? 'line-through opacity-50' : ''
           } form-check-label inline-block text-gray-800`}
-          htmlFor="todoCheck"
         >
           {todo.todo}
         </label>
