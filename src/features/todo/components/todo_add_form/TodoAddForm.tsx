@@ -13,6 +13,8 @@ const TodoAddForm = () => {
     const inputElement = formElement[0] as HTMLInputElement;
 
     const todo = inputElement.value;
+    if (todo.length === 0) return;
+
     createTodo(todo).then(() => {
       formElement.reset();
     });
