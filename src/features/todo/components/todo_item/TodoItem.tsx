@@ -1,29 +1,20 @@
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext } from 'react';
-import { deleteTodo, updateTodo } from '../../../../apis/todo';
-import TokenContext from '../../../../context/token/TokenContext';
+import TodosContext from '../../../../context/todos/TodosContext';
 import TodoData from '../../types/TodoData.types';
 
 interface Props {
   todo: TodoData;
-  invalidateTodos: () => void;
   onEdit: (id: number) => void;
 }
 
-const TodoItem = ({ todo, invalidateTodos, onEdit }: Props) => {
-  const { token } = useContext(TokenContext);
+const TodoItem = ({ todo, onEdit }: Props) => {
+  const { deleteTodo, updateTodo } = useContext(TodosContext);
 
   const handleDelete = (id: number) => {
-    if (token && window.confirm('정말 삭제하시겠습니까?')) {
-      deleteTodo(token, id).then(invalidateTodos);
-    }
-  };
-
-  const handleCheckedChange = (checked: boolean) => {
-    if (token) {
-      updateTodo(token, todo.id, todo.todo, checked) //
-        .then(invalidateTodos);
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      deleteTodo(id);
     }
   };
 
@@ -34,7 +25,9 @@ const TodoItem = ({ todo, invalidateTodos, onEdit }: Props) => {
           className="form-checkbox float-left mr-3 h-5 w-5 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-100 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
           type="checkbox"
           checked={todo.isCompleted}
-          onChange={(e) => handleCheckedChange(e.target.checked)}
+          onChange={(e) =>
+            updateTodo({ ...todo, isCompleted: e.target.checked })
+          }
           id="todoCheck"
         />
         <label

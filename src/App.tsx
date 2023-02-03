@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import TokenProvider from './context/token/TokenProvider';
 import NotFoundPage from './pages/not_found/NotFoundPage';
 import Authorized from './pages/redirect/Authorized';
@@ -18,7 +18,7 @@ function App() {
           </Route>
 
           <Route element={<Authorized />}>
-            <Route path="/" element={<TodoPage />} />
+            <Route path="/" element={<Navigate to="/todo" replace />} />
             <Route path="/todo" element={<TodoPage />} />
           </Route>
 

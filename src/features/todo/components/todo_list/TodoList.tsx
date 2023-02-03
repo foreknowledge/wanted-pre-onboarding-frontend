@@ -1,14 +1,10 @@
-import { useState } from 'react';
-import TodoData from '../../types/TodoData.types';
+import { useContext, useState } from 'react';
+import TodosContext from '../../../../context/todos/TodosContext';
 import TodoEditForm from '../todo_edit_form/TodoEditForm';
 import TodoItem from '../todo_item/TodoItem';
 
-interface Props {
-  todos: TodoData[];
-  invalidateTodos: () => void;
-}
-
-const TodoList = ({ todos, invalidateTodos }: Props) => {
+const TodoList = () => {
+  const { todos } = useContext(TodosContext);
   const [editTodoId, setEditTodoId] = useState<number | null>(null);
 
   return (
@@ -16,12 +12,11 @@ const TodoList = ({ todos, invalidateTodos }: Props) => {
       <ul className="pb-4">
         {todos.map((todo) =>
           todo.id === editTodoId ? (
-            <TodoEditForm todo={todo} />
+            <TodoEditForm key={todo.id} todo={todo} />
           ) : (
             <TodoItem
               key={todo.id}
               todo={todo}
-              invalidateTodos={invalidateTodos}
               onEdit={(id) => setEditTodoId(id)}
             />
           )

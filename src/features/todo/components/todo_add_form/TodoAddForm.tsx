@@ -1,16 +1,10 @@
 import { faAdd } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormEvent, useContext } from 'react';
-import { createTodo } from '../../../../apis/todo';
-import TokenContext from '../../../../context/token/TokenContext';
-import TodoData from '../../types/TodoData.types';
+import TodosContext from '../../../../context/todos/TodosContext';
 
-interface Props {
-  onTodoAdded: (todo: TodoData) => void;
-}
-
-const TodoAddForm = ({ onTodoAdded }: Props) => {
-  const { token } = useContext(TokenContext);
+const TodoAddForm = () => {
+  const { createTodo } = useContext(TodosContext);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -18,10 +12,8 @@ const TodoAddForm = ({ onTodoAdded }: Props) => {
     const formElement = e.target as HTMLFormElement;
     const inputElement = formElement[0] as HTMLInputElement;
 
-    if (token === null) return;
-
-    createTodo(token, inputElement.value).then((data) => {
-      onTodoAdded(data);
+    const todo = inputElement.value;
+    createTodo(todo).then(() => {
       formElement.reset();
     });
   };
