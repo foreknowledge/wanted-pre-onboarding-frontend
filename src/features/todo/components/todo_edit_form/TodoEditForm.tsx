@@ -29,6 +29,10 @@ const TodoEditForm = ({ todo, onEditEnded }: Props) => {
       <ReactTextareaAutosize
         className="form-textare flex-1 resize-none bg-transparent outline-none"
         autoFocus
+        onFocus={(e) => {
+          // autoFocus 시 커서 위치 맨 끝으로 이동
+          e.target.selectionStart = editTodo.todo.length;
+        }}
         value={editTodo.todo}
         onChange={(e) =>
           setEditTodo((todo) => {
