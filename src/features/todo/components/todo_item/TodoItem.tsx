@@ -8,9 +8,10 @@ import TodoData from '../../types/TodoData.types';
 interface Props {
   todo: TodoData;
   invalidateTodos: () => void;
+  onEdit: (id: number) => void;
 }
 
-const TodoItem = ({ todo, invalidateTodos }: Props) => {
+const TodoItem = ({ todo, invalidateTodos, onEdit }: Props) => {
   const { token } = useContext(TokenContext);
 
   const handleDelete = (id: number) => {
@@ -49,6 +50,7 @@ const TodoItem = ({ todo, invalidateTodos }: Props) => {
         <button
           className="w-9 text-gray-700 hover:opacity-50"
           data-testid="modify-button"
+          onClick={() => onEdit(todo.id)}
         >
           <FontAwesomeIcon icon={faPenToSquare} />
         </button>
