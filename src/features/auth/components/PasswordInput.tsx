@@ -14,12 +14,17 @@ const PasswordInput = ({ value, onValueChanged, validation }: Params) => {
 
   return (
     <>
-      <label
-        className="mb-2 block text-sm font-bold text-gray-700"
-        htmlFor="password"
-      >
-        비밀번호
-      </label>
+      <div className="mb-2 flex items-center">
+        <label
+          className="block text-sm font-bold text-gray-700"
+          htmlFor="password"
+        >
+          비밀번호
+        </label>
+        <p className="ml-3 text-xs text-red-500">
+          {isInvalid ? validation.message : ' '}
+        </p>
+      </div>
       <input
         className={`${
           isInvalid ? 'border-red-500' : ''
@@ -32,9 +37,6 @@ const PasswordInput = ({ value, onValueChanged, validation }: Params) => {
         onFocus={() => setFocusOut(false)}
         onBlur={() => setFocusOut(true)}
       />
-      {isInvalid && (
-        <p className="text-xs text-red-500">{validation.message}</p>
-      )}
     </>
   );
 };
