@@ -40,8 +40,8 @@ const TodoItem = ({ todo, onEdit }: Props) => {
       <div>
         <button
           className="w-9 text-gray-700 hover:opacity-50"
-          data-testid="modify-button"
           onClick={() => onEdit(todo.id)}
+          data-testid="modify-button"
         >
           <FontAwesomeIcon icon={faPenToSquare} />
         </button>

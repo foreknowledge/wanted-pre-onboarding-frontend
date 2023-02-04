@@ -37,6 +37,7 @@ const EmailInput = ({ value, onValueChanged, validation }: Params) => {
         onChange={(e) => onValueChanged(e.target.value)}
         onFocus={() => setFocusOut(false)}
         onBlur={() => setFocusOut(true)}
+        data-testid="email-input"
       />
     </>
   );

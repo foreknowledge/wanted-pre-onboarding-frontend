@@ -52,6 +52,7 @@ const SignInPage = () => {
               className="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none disabled:bg-gray-400"
               disabled={!submitEnabled}
               type="submit"
+              data-testid="signin-button"
             >
               로그인
             </button>
