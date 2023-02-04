@@ -20,7 +20,7 @@ const TodoItem = ({ todo, onEdit }: Props) => {
 
   return (
     <li className="flex items-center justify-between px-2 py-3 text-lg">
-      <div className="flex flex-1 items-center">
+      <label className="flex flex-1 items-center">
         <input
           className="form-checkbox float-left mr-3 h-5 w-5 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-100 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
           type="checkbox"
@@ -29,14 +29,14 @@ const TodoItem = ({ todo, onEdit }: Props) => {
             updateTodo({ ...todo, isCompleted: e.target.checked })
           }
         />
-        <label
+        <span
           className={`${
             todo.isCompleted ? 'line-through opacity-50' : ''
           } form-check-label inline-block whitespace-pre-wrap text-gray-800`}
         >
           {todo.todo}
-        </label>
-      </div>
+        </span>
+      </label>
       <div>
         <button
           className="w-9 text-gray-700 hover:opacity-50"
