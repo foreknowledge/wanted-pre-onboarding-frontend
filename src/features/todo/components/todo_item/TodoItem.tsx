@@ -32,7 +32,7 @@ const TodoItem = ({ todo, onEdit }: Props) => {
         <span
           className={`${
             todo.isCompleted ? 'line-through opacity-50' : ''
-          } form-check-label inline-block whitespace-pre-wrap text-gray-800`}
+          } inline-block text-gray-800`}
         >
           {todo.todo}
         </span>

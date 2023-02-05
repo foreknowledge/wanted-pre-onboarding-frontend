@@ -1,7 +1,6 @@
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext, useState } from 'react';
-import ReactTextareaAutosize from 'react-textarea-autosize';
 import TodosContext from '../../../../context/todos/TodosContext';
 import TodoData from '../../types/TodoData.types';
 
@@ -26,13 +25,10 @@ const TodoEditForm = ({ todo, onEditEnded }: Props) => {
           })
         }
       />
-      <ReactTextareaAutosize
-        className="form-textare flex-1 resize-none bg-transparent outline-none"
+      <input
+        className="form-input flex-1 bg-transparent p-0 text-lg"
+        type="text"
         autoFocus
-        onFocus={(e) => {
-          // autoFocus 시 커서 위치 맨 끝으로 이동
-          e.target.selectionStart = editTodo.todo.length;
-        }}
         value={editTodo.todo}
         onChange={(e) =>
           setEditTodo((todo) => {
