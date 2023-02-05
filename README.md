@@ -16,6 +16,36 @@
 > yarn start
 ```
 
+## 프로젝트 구조
+
+```tree
+/src
+├── apis        // 서버 요청 api
+│   ├── auth
+│   └── todo
+├── context     // context api
+│   ├── todos       // todo 데이터 관리용 컨텍스트
+│   └── token       // access token 관리용 컨텍스트
+├── features    // 기능(도메인)별로 폴더링
+│   ├── auth        // 로그인, 회원가입 기능
+│   │   ├── components
+│   │   └── validation    // 유효성 검사 로직
+│   └── todo        // Todo 기능
+│       ├── components
+│       │   ├── header
+│       │   ├── todo_add_form
+│       │   ├── todo_edit_form
+│       │   ├── todo_item
+│       │   └── todo_list
+│       └── types
+└── pages       // 라우터 별 페이지
+    ├── not_found
+    ├── redirect    // 페이지 리다이렉트 처리
+    ├── signin
+    ├── signup
+    └── todo
+```
+
 ## 사용 기술
 
 | 사용처 | 기술 |
