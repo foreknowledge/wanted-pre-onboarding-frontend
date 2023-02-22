@@ -60,7 +60,7 @@
 
 ### 폴더 구조
 
-파일의 타입에 따라 분리하는 방식(components, hooks, types, ...)과 도메인 별로 분리하는 방식 중에 고민했고, [colocation 원칙](https://reactjs.org/docs/faq-structure.html)에 따라 도메인 별로 분류하는 방식을 택했습니다.
+파일을 타입(성격)에 따라 분리하는 방식(components, hooks, types, ...)과 도메인(기능) 별로 분리하는 방식 중에 고민했고, [colocation 원칙](https://reactjs.org/docs/faq-structure.html)에 따라 도메인 별로 분류하는 방식을 택했습니다.
 
 ### 리다이렉션
 
