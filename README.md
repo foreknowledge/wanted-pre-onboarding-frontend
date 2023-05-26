@@ -5,9 +5,24 @@
 ## 직접 사용해 보기
 
 [여기](https://ellie-todo.netlify.app/)에서 앱을 직접 사용해 볼  수 있습니다. <br/>
-**⚠️ 보안을 위해 테스트용 이메일/비밀번호를 사용 해 주세요. ⚠️**
+
+#### ⚠️ 필독 ⚠️
+
+- **보안을 위해 테스트용 이메일/비밀번호를 사용 해 주세요.** <br/>
+- **배포된 API에 문제가 있는 경우, 아래 로컬 서버 구동법을 통해 실행해 주세요.**
 
 ## 실행 방법
+
+### 1. 로컬 서버 실행
+
+[서버 프로젝트](https://github.com/walking-sunset/selection-task)를 클론 받아 아래 명령어를 이용해 서버를 실행 합니다.
+
+```shell
+> yarn
+> yarn start
+```
+
+### 2. 앱 실행
 
 본 프로젝트를 클론 받아 아래 명령어로 앱을 실행할 수 있습니다.
 
@@ -15,6 +30,16 @@
 > yarn
 > yarn start
 ```
+
+## 미리 보기
+
+### 로그인/회원가입
+
+https://github.com/foreknowledge/wanted-pre-onboarding-frontend/assets/29790944/e5b2daf3-5727-4aa2-b492-1965236ef585
+
+### Todo List
+
+https://github.com/foreknowledge/wanted-pre-onboarding-frontend/assets/29790944/c17e61f8-4f82-4c45-8e72-dbd99a6ba19c
 
 ## 프로젝트 구조
 
